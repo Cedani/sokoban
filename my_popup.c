@@ -9,30 +9,28 @@
 
 int main(int argc, char **argv)
 {
-    int y = 0;
-    int x = 0;
-    int ch;
+    int nb_lines;
+    int c = 0;
+    char **map = loading_map(argv[1], &nb_lines);
+    t_player player;
+    player.nb_line = nb_lines;
 
+    check_player(map);
+    finding_player(map, &player);
     initscr();
-    getmaxyx(stdscr, y, x);
-
-    y /= 2;
-    x /= 2;
-    while (ch != 32) {
-        mvprintw(y, x, "%s", argv[1]);
-        ch = getch();
-        if (ch == 'z')
-            y--;
-        if (ch == 'q')
-            x--;
-        if (ch == 's')
-            y++;
-        if (ch == 'd')
-            x++;
+    curs_set(0);
+    while (c != 32) {
+        for (int i = 0; map[i]; i += 1) {
+            mvprintw(i, 0, "%s", map[i]);
+        }
+        mvprintw(player.y, player.x, "%c", 'P');
+        c = getch();
+        moving(c, &player, map);
         clear();
         refresh();
+        if (checking_win(map) == 0)
+            exit (0);
     }
     endwin();
-
     return (0);
 }
