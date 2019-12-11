@@ -13,18 +13,13 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 typedef struct s_player {
     int x;
     int y;
     int nb_line;
 } t_player;
-
-typedef struct s_limit {
-    int x_lim;
-    int y_lim;
-} t_limit;
 
 int my_strlen(char const *str);
 int count_good_size(char *str);
@@ -34,4 +29,10 @@ void moving(int ch, t_player *pl, char **map);
 void check_player(char **map);
 int finding_player(char **map, t_player *player);
 int checking_win(char **map);
+int jump_goodchar(char c);
+void check_char(char **map);
+char **error(char const *filepath, int *nb_lines);
+void opening_file(char const *filepath);
+void check_bootle(char **map);
+void reset_map(char const *filepath, char ***map, t_player *player);
 #endif /* !MY */

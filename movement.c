@@ -7,20 +7,6 @@
 
 #include "my.h"
 
-void check_player(char **map)
-{
-    int nb = 0;
-    for (int i = 0; map[i]; i += 1)
-        for (int j = 0; map[i][j]; j += 1) {
-            if (map[i][j] == 'P')
-                nb += 1;
-        }
-    if (nb != 1) {
-        write(2, "too many player\n", 16);
-        exit (84);
-    }
-}
-
 int finding_player(char **map, t_player *player)
 {
     for (int j = 0; map[j]; j += 1) {
@@ -75,7 +61,7 @@ void moving(int ch, t_player *pl, char **map)
             decrease(&pl->y, &map[pl->y - 1][pl->x], "#");
     }
     if (ch == KEY_DOWN) {
-        if (pl->y + 2 <= pl->nb_line - 2)
+        if (pl->y + 2 <= pl->nb_line - 1)
             increase(&pl->y, &map[pl->y + 1][pl->x], &map[pl->y + 2][pl->x]);
         else
             increase(&pl->y, &map[pl->y + 1][pl->x], "#");

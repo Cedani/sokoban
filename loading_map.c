@@ -7,16 +7,16 @@
 
 #include "my.h"
 
-int error(char const *filepath)
+char **error(char const *filepath, int *nb_lines)
 {
-    int fd = open(filepath, O_RDONLY);
-    char s;
+    char **map;
 
-    if (fd == -1) {
-        exit (84);
-    }
-    close (fd);
-    return (0);
+    opening_file(filepath);
+    map = loading_map(filepath, nb_lines);
+    check_char(map);
+    check_bootle(map);
+    check_player(map);
+    return (map);
 }
 
 char **loading_map(char const *filepath, int *nb_lines)
@@ -33,6 +33,7 @@ char **loading_map(char const *filepath, int *nb_lines)
     *nb_lines = count_good_size(buffer);
     map = my_str_to_word_array(buffer, *nb_lines);
     close(fd);
+    free(buffer);
     return (map);
 }
 

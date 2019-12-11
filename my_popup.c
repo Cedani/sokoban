@@ -10,8 +10,10 @@
 int main(int argc, char **argv)
 {
     int nb_lines;
+    int nb_lines2;
     int c = 0;
-    char **map = loading_map(argv[1], &nb_lines);
+    char **map = error(argv[1], &nb_lines);
+    char **test = error(argv[1], &nb_lines);
     t_player player;
     player.nb_line = nb_lines;
 
@@ -19,18 +21,18 @@ int main(int argc, char **argv)
     finding_player(map, &player);
     initscr();
     curs_set(0);
-    while (c != 32) {
-        for (int i = 0; map[i]; i += 1) {
+    while (checking_win(map) != 0 && c != 'x') {
+        clear();
+        moving(c, &player, map);
+        for (int i = 0; map[i]; i += 1)
             mvprintw(i, 0, "%s", map[i]);
-        }
         mvprintw(player.y, player.x, "%c", 'P');
         c = getch();
-        moving(c, &player, map);
-        clear();
         refresh();
-        if (checking_win(map) == 0)
-            exit (0);
+        if (c == 32)
+            reset_map(argv[1], &map, &player);
     }
+    free(map);
     endwin();
     return (0);
 }
