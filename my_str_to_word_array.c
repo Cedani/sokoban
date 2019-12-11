@@ -46,6 +46,10 @@ int jump_nonalpha(char str)
         return (0);
     if (str == '#')
         return (0);
+    else {
+        write(2, "unauthorized character\n", 23);
+        exit (84);
+    }
 }
 
 int my_len(char *str, int i)
