@@ -46,7 +46,7 @@ void check_bootle(char **map)
                 nb_x += 1;
         }
     if (nb_o != nb_x) {
-        write (2, "wrong number of bottle or blanks\n", 33);
+        write (2, "wrong number of bottle or blanks\n", 35);
         exit (84);
     }
     if (nb_o == 0 || nb_x == 0) {

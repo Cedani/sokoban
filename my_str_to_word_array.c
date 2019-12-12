@@ -20,12 +20,13 @@ char **my_str_to_word_array(char *str, int nb_lines)
     char **tab = NULL;
     int i = 0;
     int k = 0;
-    int size = my_len(str, k);
+    int size = 0;
     int m = my_strlen(str);
 
-    tab = malloc((sizeof(char *)) * (nb_lines + 1));
+    tab = malloc((sizeof(char *)) * (nb_lines) + 1);
     while (k < m) {
         if (jump_nonalpha(str[k]) == 0) {
+            size = my_len(str, k);
             tab[i] = malloc((sizeof(char)) * (size) + 1);
             tab[i] = convert(str, tab[i], &k);
             i++;
@@ -38,6 +39,8 @@ char **my_str_to_word_array(char *str, int nb_lines)
 
 int jump_nonalpha(char str)
 {
+    if (str == '\0')
+        return (1);
     if (str == '\n')
         return (1);
     if (str == 'X' || str == 'O' )
@@ -46,10 +49,8 @@ int jump_nonalpha(char str)
         return (0);
     if (str == '#')
         return (0);
-    else {
-        write(2, "unauthorized character\n", 23);
+    else
         exit (84);
-    }
 }
 
 int my_len(char *str, int i)

@@ -35,4 +35,5 @@ char **error(char const *filepath, int *nb_lines);
 void opening_file(char const *filepath);
 void check_bootle(char **map);
 void reset_map(char const *filepath, char ***map, t_player *player);
+void check_loosing(char **map);
 #endif /* !MY */

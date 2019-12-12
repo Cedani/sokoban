@@ -13,7 +13,6 @@ int main(int argc, char **argv)
     int nb_lines2;
     int c = 0;
     char **map = error(argv[1], &nb_lines);
-    char **test = error(argv[1], &nb_lines);
     t_player player;
     player.nb_line = nb_lines;
 
@@ -31,6 +30,7 @@ int main(int argc, char **argv)
         refresh();
         if (c == 32)
             reset_map(argv[1], &map, &player);
+        check_loosing(map);
     }
     free(map);
     endwin();
