@@ -11,6 +11,8 @@ int jump_goodchar(char c)
 {
     if (c == ' ')
         return (0);
+    if (c == '\n')
+        return (0);
     if (c == 'P')
         return (0);
     if (c == 'X')

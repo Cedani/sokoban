@@ -30,11 +30,22 @@ char **my_str_to_word_array(char *str, int nb_lines)
             tab[i] = malloc((sizeof(char)) * (size) + 1);
             tab[i] = convert(str, tab[i], &k);
             i++;
-        }
+        } else
+            condition(str, k, tab, &i);
         k++;
     }
     tab[i] = NULL;
     return (tab);
+}
+
+void condition(char *str, int k, char **tab, int *i)
+{
+    if (jump_nonalpha(str[k]) == 1 && jump_nonalpha(str[k + 1]) == 1) {
+            tab[*i] = malloc(sizeof(char) * 2);
+            tab[*i][0] = '\n';
+            tab[*i][1] = '\0';
+            *i += 1;
+    }
 }
 
 int jump_nonalpha(char str)

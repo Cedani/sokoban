@@ -51,5 +51,5 @@ void display_blank(char **map, int *nb_o);
 void my_putchar(char c);
 int my_strcmp(char const *s1, char const *s2);
 void display_usage(void);
-
+void condition(char *str, int k, char **tab, int *i);
 #endif /* !MY */
