@@ -12,6 +12,7 @@ SRC		=		my_popup.c 	\
 				movement.c 				\
 				checkers.c 				\
 				reset.c 				\
+				key.c 					\
 
 
 

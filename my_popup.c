@@ -10,27 +10,20 @@
 int main(int argc, char **argv)
 {
     int nb_lines;
-    int nb_lines2;
     int c = 0;
     char **map = error(argv[1], &nb_lines);
     t_player player;
     player.nb_line = nb_lines;
 
-    check_player(map);
-    finding_player(map, &player);
+    init_var(map, &player);
     initscr();
     curs_set(0);
-    while (checking_win(map) != 0 && c != 'x') {
+    while (c != 'x') {
         clear();
-        moving(c, &player, map);
-        for (int i = 0; map[i]; i += 1)
-            mvprintw(i, 0, "%s", map[i]);
-        mvprintw(player.y, player.x, "%c", 'P');
+        game_loop(map, &player, c);
         c = getch();
         refresh();
-        if (c == 32)
-            reset_map(argv[1], &map, &player);
-        check_loosing(map);
+        event(map, c, &player, argv[1]);
     }
     free(map);
     endwin();

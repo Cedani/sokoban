@@ -21,7 +21,8 @@ int finding_player(char **map, t_player *player)
     }
 }
 
-int increase(int *x, char *comp, char *comp1) {
+int increase(int *x, char *comp, char *comp1)
+{
     if (comp[0] == 'X') {
         if (comp1[0] != '#') {
             comp1[0] = comp[0];
@@ -36,7 +37,8 @@ int increase(int *x, char *comp, char *comp1) {
         *x += 1;
 }
 
-int decrease(int *x, char *comp, char *comp1) {
+int decrease(int *x, char *comp, char *comp1)
+{
     if (comp[0] == 'X') {
         if (comp1[0] != '#') {
             comp1[0] = comp[0];
@@ -55,28 +57,16 @@ void moving(int ch, t_player *pl, char **map)
 {
     keypad(stdscr, TRUE);
     if (ch == KEY_UP) {
-        if (pl->y - 2 > 0)
-            decrease(&pl->y, &map[pl->y - 1][pl->x], &map[pl->y - 2][pl->x]);
-        else
-            decrease(&pl->y, &map[pl->y - 1][pl->x], "#");
+        key_up_pressed(pl, map);
     }
     if (ch == KEY_DOWN) {
-        if (pl->y + 2 <= pl->nb_line - 1)
-            increase(&pl->y, &map[pl->y + 1][pl->x], &map[pl->y + 2][pl->x]);
-        else
-            increase(&pl->y, &map[pl->y + 1][pl->x], "#");
+        key_down_pressed(pl, map);
     }
     if (ch == KEY_LEFT) {
-        if (pl->x - 2 > 0)
-            decrease(&pl->x, &map[pl->y][pl->x - 1], &map[pl->y][pl->x - 2]);
-        else
-            decrease(&pl->x, &map[pl->y][pl->x - 1], "#");
+        key_left_pressed(pl, map);
     }
     if (ch == KEY_RIGHT) {
-        if (pl->x + 2 <= my_strlen(map[pl->y]) - 1)
-            increase(&pl->x, &map[pl->y][pl->x + 1], &map[pl->y][pl->x + 2]);
-        else
-            increase(&pl->x, &map[pl->y][pl->x + 1], "#");
+        key_right_pressed(pl, map);
     }
 }
 
