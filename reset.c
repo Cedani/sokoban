@@ -50,7 +50,7 @@ void check_loosing(char **map)
             }
         }
         tmp = 0;
-        if ((check_x(map) - check == 0 ) || (check - 1 == checking_win(map))) {
+        if (check == check_x(map)) {
             endwin();
             exit (1);
         }
