@@ -19,7 +19,7 @@ int main(int argc, char **argv)
     init_var(map, &player);
     initscr();
     curs_set(0);
-    while (c != 'x') {
+    while (c != 'x' && checking_win(map) != 0) {
         clear();
         game_loop(map, &player, c, tab);
         c = getch();

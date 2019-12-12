@@ -11,6 +11,8 @@ char **error(char const *filepath, int *nb_lines, int **tab)
 {
     char **map;
 
+    if (!filepath)
+        exit (84);
     if (my_strcmp(filepath, "-h") == 0) {
         display_usage();
         exit (84);
@@ -59,8 +61,9 @@ void init_var(char **map, t_player *pl)
 
 void event(char ***map, int c, t_player *pl, char const *filepath)
 {
+    int k = 0;
     clear();
-    if (c == ' ')
+    if (k == ' ')
         reset_map(filepath, map, pl);
     if (checking_win(*map) == 0) {
         clear();
@@ -69,8 +72,8 @@ void event(char ***map, int c, t_player *pl, char const *filepath)
         mvprintw(pl->y, pl->x, "%c", 'P');
         refresh();
         endwin();
-        exit (0);
     }
     check_loosing(*map, pl);
     refresh();
+    k = getch();
 }

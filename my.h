@@ -13,7 +13,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
-//#include <stdio.h>
+#include <ncurses.h>
 
 typedef struct s_player {
     int x;
