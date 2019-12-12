@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         game_loop(map, &player, c);
         c = getch();
         refresh();
-        event(map, c, &player, argv[1]);
+        event(&map, c, &player, argv[1]);
     }
     free(map);
     endwin();

@@ -36,20 +36,23 @@ void check_loosing(char **map)
 {
     int check = 0;
     int tmp = 0;
-    int k = check_x(map);
+    int ok = 0;
     for (int i = 0; map[i]; i += 1) {
         for (int j = 0; map[i][j]; j += 1) {
             if (map[i][j] == 'X') {
                 tmp = run_through(i, j, map);
+                ok = 0;
+            }
+            if (tmp > 3 && ok != 1) {
+                check += 1;
+                ok = 1;
             }
         }
-        if (tmp > 3)
-            check += 1;
-        if (check <= check_x(map) && check >= checking_win(map)) {
+        tmp = 0;
+        if ((check_x(map) - check == 0 ) || (check - 1 == checking_win(map))) {
             endwin();
             exit (1);
         }
-        tmp = 0;
     }
 }
 

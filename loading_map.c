@@ -52,14 +52,15 @@ void init_var(char **map, t_player *pl)
     finding_player(map, pl);
 }
 
-void event(char **map, int c, t_player *pl, char const *filepath)
+void event(char ***map, int c, t_player *pl, char const *filepath)
 {
-    refresh();
-    if (c == 32)
-        reset_map(filepath, &map, pl);
-    if (checking_win(map) == 0) {
+    clear();
+    if (c == ' ')
+        reset_map(filepath, map, pl);
+    if (checking_win(*map) == 0) {
         endwin();
         exit (0);
     }
-    check_loosing(map);
+    check_loosing(*map);
+    refresh();
 }

@@ -21,7 +21,7 @@ OBJ		=		$(SRC:.c=.o)
 NAME	=		my_sokoban
 
 all:		$(OBJ)
-		gcc $(OBJ) -o $(NAME) -lncurses
+		gcc $(OBJ) -o $(NAME) -lncurses -g3
 
 clean:
 		rm -rf *.o

@@ -43,7 +43,7 @@ void key_up_pressed(t_player *pl, char **map);
 void key_down_pressed(t_player *pl, char **map);
 int increase(int *x, char *comp, char *comp1);
 int decrease(int *x, char *comp, char *comp1);
-void event(char **map, int c, t_player *pl, char const *filepath);
+void event(char ***map, int c, t_player *pl, char const *filepath);
 void game_loop(char **map, t_player *pl, int c);
 void init_var(char **map, t_player *pl);
 #endif /* !MY */

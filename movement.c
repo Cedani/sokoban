@@ -24,7 +24,7 @@ int finding_player(char **map, t_player *player)
 int increase(int *x, char *comp, char *comp1)
 {
     if (comp[0] == 'X') {
-        if (comp1[0] != '#') {
+        if (comp1[0] != '#' && comp1[0] != 'X') {
             comp1[0] = comp[0];
             comp[0] = ' ';
             *x += 1;
@@ -39,7 +39,7 @@ int increase(int *x, char *comp, char *comp1)
 
 int decrease(int *x, char *comp, char *comp1)
 {
-    if (comp[0] == 'X') {
+    if (comp[0] == 'X' && comp1[0] != 'X') {
         if (comp1[0] != '#') {
             comp1[0] = comp[0];
             comp[0] = ' ';
