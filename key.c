@@ -42,6 +42,15 @@ void key_right_pressed(t_player *pl, char **map)
 void game_loop(char **map, t_player *pl, int c, int *tab)
 {
     moving(c, pl, map);
+    if (checking_win(map) == 0) {
+        for (int i = 0; map[i]; i += 1)
+            mvprintw(i, 0, "%s", map[i]);
+        mvprintw(pl->y, pl->x, "%c", 'P');
+        printw("done");
+        endwin();
+        exit (0);
+    }
+    check_loosing(map, pl);
     display_blank(map, tab);
     for (int i = 0; map[i]; i += 1)
             mvprintw(i, 0, "%s", map[i]);

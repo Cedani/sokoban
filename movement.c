@@ -73,6 +73,7 @@ void moving(int ch, t_player *pl, char **map)
 int checking_win(char **map)
 {
     int check = 0;
+
     for (int i = 0; map[i]; i += 1)
         for (int j = 0; map[i][j]; j += 1)
             if (map[i][j] == 'O')

@@ -61,19 +61,6 @@ void init_var(char **map, t_player *pl)
 
 void event(char ***map, int c, t_player *pl, char const *filepath)
 {
-    int k = 0;
-    clear();
-    if (k == ' ')
+    if (c == ' ')
         reset_map(filepath, map, pl);
-    if (checking_win(*map) == 0) {
-        clear();
-        for (int i = 0; map[0][i]; i += 1)
-            mvprintw(i, 0, "%s", map[0][i]);
-        mvprintw(pl->y, pl->x, "%c", 'P');
-        refresh();
-        endwin();
-    }
-    check_loosing(*map, pl);
-    refresh();
-    k = getch();
 }
