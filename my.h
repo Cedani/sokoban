@@ -35,7 +35,7 @@ char **error(char const *filepath, int *nb_lines, int **tab);
 void opening_file(char const *filepath);
 void check_bootle(char **map);
 void reset_map(char const *filepath, char ***map, t_player *player);
-void check_loosing(char **map);
+void check_loosing(char **map, t_player *pl);
 int run_through(int y, int x, char **map);
 void key_right_pressed(t_player *pl, char **map);
 void key_left_pressed(t_player *pl, char **map);
@@ -52,4 +52,5 @@ void my_putchar(char c);
 int my_strcmp(char const *s1, char const *s2);
 void display_usage(void);
 void condition(char *str, int k, char **tab, int *i);
+void display_end(char **map, t_player *pl);
 #endif /* !MY */

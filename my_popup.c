@@ -23,10 +23,10 @@ int main(int argc, char **argv)
         clear();
         game_loop(map, &player, c, tab);
         c = getch();
-        refresh();
         event(&map, c, &player, argv[1]);
+        refresh();
     }
-    free(map);
     endwin();
+    free(map);
     return (0);
 }

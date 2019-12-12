@@ -33,7 +33,7 @@ int check_x(char **map)
     return (x);
 }
 
-void check_loosing(char **map)
+void check_loosing(char **map, t_player *pl)
 {
     int check = 0;
     int tmp = 0;
@@ -44,15 +44,14 @@ void check_loosing(char **map)
                 tmp = run_through(i, j, map);
                 ok = 0;
             }
-            if (tmp > 3 && ok != 1) {
+            if (tmp == 5 && ok != 1) {
                 check += 1;
                 ok = 1;
             }
         }
         tmp = 0;
         if (check == check_x(map)) {
-            endwin();
-            exit (1);
+            display_end(map, pl);
         }
     }
 }
