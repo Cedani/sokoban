@@ -53,7 +53,7 @@ void check_loosing(char **map)
             if (tmp > 3)
                 check += 1;
         }
-        if (check == check_x(map) && check >= checking_win(map)) {
+        if (check <= check_x(map) && check >= checking_win(map)) {
             endwin();
             exit (84);
         }
