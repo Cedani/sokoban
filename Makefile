@@ -14,6 +14,9 @@ SRC		=		my_popup.c 	\
 				reset.c 				\
 				key.c 					\
 				manage_blank.c 			\
+				my_putchar.c 			\
+				my_putstr.c 			\
+				my_strcmp.c 			\
 
 
 

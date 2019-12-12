@@ -11,6 +11,10 @@ char **error(char const *filepath, int *nb_lines, int **tab)
 {
     char **map;
 
+    if (my_strcmp(filepath, "-h") == 0) {
+        display_usage();
+        exit (84);
+    }
     opening_file(filepath);
     map = loading_map(filepath, nb_lines);
     check_char(map);

@@ -48,4 +48,8 @@ void game_loop(char **map, t_player *pl, int c, int *tab);
 void init_var(char **map, t_player *pl);
 int *manage_blank(char **map);
 void display_blank(char **map, int *nb_o);
+void my_putchar(char c);
+int my_strcmp(char const *s1, char const *s2);
+void display_usage(void);
+
 #endif /* !MY */
