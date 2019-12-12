@@ -13,6 +13,7 @@ SRC		=		my_popup.c 	\
 				checkers.c 				\
 				reset.c 				\
 				key.c 					\
+				manage_blank.c 			\
 
 
 

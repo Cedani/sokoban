@@ -10,7 +10,8 @@
 void reset_map(char const *filepath, char ***map, t_player *player)
 {
     int nb_line;
-    *map = error(filepath, &nb_line);
+    int *tab;
+    *map = error(filepath, &nb_line, &tab);
     finding_player(*map, player);
 }
 

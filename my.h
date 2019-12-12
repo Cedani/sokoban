@@ -31,7 +31,7 @@ int finding_player(char **map, t_player *player);
 int checking_win(char **map);
 int jump_goodchar(char c);
 void check_char(char **map);
-char **error(char const *filepath, int *nb_lines);
+char **error(char const *filepath, int *nb_lines, int **tab);
 void opening_file(char const *filepath);
 void check_bootle(char **map);
 void reset_map(char const *filepath, char ***map, t_player *player);
@@ -44,6 +44,8 @@ void key_down_pressed(t_player *pl, char **map);
 int increase(int *x, char *comp, char *comp1);
 int decrease(int *x, char *comp, char *comp1);
 void event(char ***map, int c, t_player *pl, char const *filepath);
-void game_loop(char **map, t_player *pl, int c);
+void game_loop(char **map, t_player *pl, int c, int *tab);
 void init_var(char **map, t_player *pl);
+int *manage_blank(char **map);
+void display_blank(char **map, int *nb_o);
 #endif /* !MY */

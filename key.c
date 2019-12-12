@@ -39,9 +39,10 @@ void key_right_pressed(t_player *pl, char **map)
             increase(&pl->x, &map[pl->y][pl->x + 1], "#");
 }
 
-void game_loop(char **map, t_player *pl, int c)
+void game_loop(char **map, t_player *pl, int c, int *tab)
 {
     moving(c, pl, map);
+    display_blank(map, tab);
     for (int i = 0; map[i]; i += 1)
             mvprintw(i, 0, "%s", map[i]);
     mvprintw(pl->y, pl->x, "%c", 'P');

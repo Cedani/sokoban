@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-char **error(char const *filepath, int *nb_lines)
+char **error(char const *filepath, int *nb_lines, int **tab)
 {
     char **map;
 
@@ -16,6 +16,7 @@ char **error(char const *filepath, int *nb_lines)
     check_char(map);
     check_bootle(map);
     check_player(map);
+    *tab = manage_blank(map);
     return (map);
 }
 
