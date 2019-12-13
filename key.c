@@ -46,7 +46,7 @@ void game_loop(char **map, t_player *pl, int c, int *tab)
         for (int i = 0; map[i]; i += 1)
             mvprintw(i, 0, "%s", map[i]);
         mvprintw(pl->y, pl->x, "%c", 'P');
-        printw("done");
+        refresh();
         endwin();
         exit (0);
     }
